@@ -1,0 +1,64 @@
+import kotlin.String;
+import kotlin.collections.List;
+
+
+CREATE TABLE MovieEntity (
+    tmdbId INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    directors TEXT AS List<String> NOT NULL ,
+    services TEXT AS List<String> NOT NULL ,
+    imdbId TEXT NOT NULL,
+    originalTitle TEXT,
+    genres TEXT AS List<String> NOT NULL
+);
+
+CREATE TABLE SeriesEntity (
+    tmdbId INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    creators TEXT AS List<String> NOT NULL ,
+    services TEXT AS List<String> NOT NULL ,
+    imdbId TEXT NOT NULL,
+    originalTitle TEXT,
+    genres TEXT AS List<String> NOT NULL,
+    status TEXT AS List<String> NOT NULL,
+    seasonCount INTEGER NOT NULL,
+    episodeCount INTEGER NOT NULL
+);
+
+insertMovie:
+INSERT INTO MovieEntity( tmdbId,
+                         title,
+                         directors,
+                         services,
+                         imdbId,
+                         originalTitle,
+                         genres)
+VALUES(?, ?, ?, ?, ?, ?, ?);
+
+removeAllMovies:
+DELETE FROM MovieEntity;
+
+selectAllMovies:
+SELECT MovieEntity.*
+FROM MovieEntity;
+
+
+insertSeries:
+INSERT INTO SeriesEntity( tmdbId,
+                          title,
+                          creators,
+                          services,
+                          imdbId,
+                          originalTitle,
+                          genres,
+                          status,
+                          seasonCount,
+                          episodeCount)
+VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+removeAllSeries:
+DELETE FROM SeriesEntity;
+
+selectAllSeries:
+SELECT SeriesEntity.*
+FROM SeriesEntity;
